@@ -1,4 +1,3 @@
-import { ProductProps } from "../../types";
 
 export const getProducts = async () => {
     const res = await fetch(process.env.API_PRODUCTS!);
