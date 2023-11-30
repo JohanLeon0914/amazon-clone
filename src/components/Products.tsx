@@ -5,13 +5,18 @@ import { HiShoppingCart } from "react-icons/hi";
 import { FaHeart } from "react-icons/fa";
 import FormattedPrice from "./FormattedPrice";
 import { useDispatch } from "react-redux";
-import { addToCart, addToFavorite } from "@/store/nextSlice";
+import { addToCart, addToFavorite, setAllProducts } from "@/store/nextSlice";
+import { useEffect } from "react";
 
 interface ProductsProps {
   productData: Product[];
 }
 
 const Products = ({ productData }: ProductsProps) => {
+  useEffect(() => {
+    dispatch(setAllProducts({ allProducts: productData }));
+  }, [productData]);
+
   const dispatch = useDispatch();
   return (
     <div className="w-full px-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
